@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    image: redeems-challange:1.0
+    build: .
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+    command: ./bin/rails server -b 0.0.0.0
+
+  test:
+    image: redeems-challange:1.0
+    build: .
+    volumes:
+      - .:/rails
+    environment:
+      RAILS_ENV: test
+    command: ./bin/rails test
