@@ -1,5 +1,5 @@
 # test/controllers/products_controller_test.rb
-require "test_helper"
+require 'test_helper'
 
 class RedeemsControllerTest < ActionDispatch::IntegrationTest
   describe 'POST /api/v1/redeems' do
