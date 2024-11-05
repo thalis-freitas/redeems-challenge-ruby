@@ -10,6 +10,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
