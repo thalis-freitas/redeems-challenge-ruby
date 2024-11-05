@@ -1,5 +1,5 @@
 # test/controllers/products_controller_test.rb
-require "test_helper"
+require 'test_helper'
 
 class RedeemPagesControllerTest < ActionDispatch::IntegrationTest
   setup do
