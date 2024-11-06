@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_06_204020) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_06_204917) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_06_204020) do
     t.string "country", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "redeem_page_id", null: false
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["redeem_page_id"], name: "index_questions_on_redeem_page_id"
   end
 
   create_table "redeem_page_size_options", force: :cascade do |t|
@@ -74,6 +82,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_06_204020) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "questions", "redeem_pages"
   add_foreign_key "redeem_page_size_options", "redeem_pages"
   add_foreign_key "redeem_page_size_options", "size_options"
   add_foreign_key "redeems", "addresses"
