@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_06_201840) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_06_202535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_06_201840) do
     t.string "country", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "redeem_page_size_options", force: :cascade do |t|
+    t.bigint "redeem_page_id", null: false
+    t.bigint "size_option_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["redeem_page_id", "size_option_id"], name: "idx_on_redeem_page_id_size_option_id_748055fd9b", unique: true
+    t.index ["redeem_page_id"], name: "index_redeem_page_size_options_on_redeem_page_id"
+    t.index ["size_option_id"], name: "index_redeem_page_size_options_on_size_option_id"
   end
 
   create_table "redeem_pages", force: :cascade do |t|
@@ -55,4 +65,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_06_201840) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "redeem_page_size_options", "redeem_pages"
+  add_foreign_key "redeem_page_size_options", "size_options"
 end
