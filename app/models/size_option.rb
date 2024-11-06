@@ -1,0 +1,2 @@
+class SizeOption < ApplicationRecord
+end
