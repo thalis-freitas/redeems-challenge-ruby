@@ -85,5 +85,14 @@ class RedeemTest < ActiveSupport::TestCase
 
       assert redeem.valid?
     end
+
+    test 'has many answers' do
+      redeem = redeems(:pending_redeem)
+
+      assert_equal 2, redeem.answers.count
+      assert_instance_of Answer, redeem.answers.first
+      assert_includes redeem.answers, answers(:one)
+      assert_includes redeem.answers, answers(:two)
+    end
   end
 end

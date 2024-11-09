@@ -4,6 +4,8 @@ class Redeem < ApplicationRecord
   belongs_to :address
   belongs_to :size_option, optional: true
 
+  has_many :answers, dependent: :destroy
+
   enum :status, { pending: 0, approved: 1, rejected: 2 }
 
   validates :status, presence: true
