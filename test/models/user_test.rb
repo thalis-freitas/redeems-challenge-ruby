@@ -55,8 +55,8 @@ class UserTest < ActiveSupport::TestCase
 
       user.valid?
 
-      refute_includes user.errors.details[:registration_number],
-                      { error: I18n.t('errors.messages.invalid_cpf') }
+      assert_not_includes user.errors.details[:registration_number],
+                          { error: I18n.t('errors.messages.invalid_cpf') }
     end
 
     test 'registration_number removes special characters before save' do
@@ -84,7 +84,7 @@ class UserTest < ActiveSupport::TestCase
       user.valid?
 
       assert_includes user.errors.details[:email], { error: :taken,
-                                                    value: existing_user.email }
+                                                     value: existing_user.email }
 
       assert_includes user.errors[:email], I18n.t('errors.messages.taken')
     end

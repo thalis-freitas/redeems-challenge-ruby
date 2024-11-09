@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # has_many :redeems
+
   validates :name, presence: true
   validates :registration_number, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true,
@@ -14,9 +16,9 @@ class User < ApplicationRecord
   def valid_cpf
     return if registration_number.blank?
 
-    unless cpf_valid?(registration_number)
-      errors.add(:registration_number, I18n.t('errors.messages.invalid_cpf'))
-    end
+    return if cpf_valid?(registration_number)
+
+    errors.add(:registration_number, I18n.t('errors.messages.invalid_cpf'))
   end
 
   def cpf_valid?(cpf)
@@ -25,7 +27,7 @@ class User < ApplicationRecord
 
     digit1 = calculate_cpf_digit(cpf[0..8])
     digit2 = calculate_cpf_digit(cpf[0..9])
-    cpf[-2..-1] == "#{digit1}#{digit2}"
+    cpf[-2..] == "#{digit1}#{digit2}"
   end
 
   def calculate_cpf_digit(digits)

@@ -1,0 +1,18 @@
+one:
+  street: "Rua Dirceu Arcoverde"
+  number: "123"
+  complement: "Apt 4B"
+  neighborhood: "Frei Higino"
+  city: "Parnaíba"
+  state: "PI"
+  zip_code: "64207-188"
+  country: "Brazil"
+
+two:
+  street: "Avenida Josinaldo Nascimento"
+  number: "456"
+  neighborhood: "Gramame"
+  city: "João Pessoa"
+  state: "PB"
+  zip_code: "58067095"
+  country: "Brazil"
