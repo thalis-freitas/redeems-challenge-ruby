@@ -11,7 +11,7 @@ class RedeemPageSizeOptionTest < ActiveSupport::TestCase
     end
 
     test 'is invalid with duplicate redeem_page_id and size_option_id combination' do
-      option = RedeemPageSizeOption.create!(
+      RedeemPageSizeOption.create!(
         redeem_page: redeem_pages(:one), size_option: size_options(:large)
       )
 

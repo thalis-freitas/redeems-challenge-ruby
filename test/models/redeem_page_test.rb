@@ -52,5 +52,35 @@ class RedeemPageTest < ActiveSupport::TestCase
       assert redeem_page.size_options.exists?(size: 'S')
       assert redeem_page.size_options.exists?(size: 'M')
     end
+
+    test 'should destroy associated redeem_page_size_options when redeem_page is destroyed' do
+      redeem_page = redeem_pages(:one)
+      size_option = size_options(:large)
+
+      redeem_page_size_option = RedeemPageSizeOption.create!(
+        redeem_page: redeem_page, size_option: size_option
+      )
+
+      redeem_page.destroy
+
+      assert_nil RedeemPageSizeOption.find_by(id: redeem_page_size_option.id)
+    end
+
+    test 'has many questions with dependent destroy' do
+      redeem_page = redeem_pages(:one)
+      question = Question.new(content: 'What is Lorem Ipsum?',
+                              redeem_page: redeem_page)
+
+      redeem_page.destroy
+
+      assert_nil Question.find_by(id: question.id)
+    end
+
+    test 'redeem_page can exist without questions' do
+      redeem_page = redeem_pages(:two)
+
+      assert redeem_page.valid?
+      assert_equal 0, redeem_page.questions.count
+    end
   end
 end
