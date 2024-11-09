@@ -1,5 +1,7 @@
 one:
   name: 'Lorem ipsum dolor sit amet'
+  active: true
 
 two:
   name: 'Lorem Ipsum is simply dummy text'
+  active: false
