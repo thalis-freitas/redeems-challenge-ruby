@@ -1,72 +1,69 @@
 # Redeems Challenge
 
-## Getting Started
+## Sumário
+  * [Descrição do projeto](#descrição-do-projeto)
+  * [Desenvolvimento](#desenvolvimento)
+  * [Como rodar a aplicação](#como-rodar-a-aplicação)
+  * [Como rodar os testes](#como-rodar-os-testes)
 
-Essas instruções fornecerão uma cópia do projeto instalado e funcionando em sua máquina local para fins de desenvolvimento e teste.
+## Descrição do projeto
 
-### Pré-requisitos
+<p align="justify"> API desenvolvida para o desafio técnico de backend em Ruby. O objetivo é criar uma API para gerenciar páginas de resgates, onde os usuários podem preencher seus dados para serem aprovados e, após a aprovação, receberem os itens relacionados ao resgate.</p>
 
-* [Ruby](https://www.ruby-lang.org/) - [Instalando o Ruby](https://www.ruby-lang.org/pt/documentation/installation/)
+## Desenvolvimento
 
-## Instalação:
-Descompactar o arquivo [redeems-challenge-ruby-master.zip](https://github.com/lobby-tech/redeems-challenge-ruby/archive/refs/heads/master.zip) ou baixar o código através do  [repositório no GitHub](https://github.com/lobby-tech/redeems-challenge-ruby)
+### Premissas
 
-## Rodando a aplicação
+- [x] O resgate obrigatoriamente deve estar associado a uma página de resgate.
+- [x] Páginas de resgate podem (ou não) ter variações de tamanhos.
+- [x] Páginas de resgate podem (ou não) ter perguntas extras.
+- [ ] Páginas de resgate podem ficar inacessíveis para novos resgates.
+- [ ] O mesmo usuário não pode realizar novos resgates antes que o resgate anterior seja aprovado ou reprovado.
 
-### Utilizando Docker
+### Solução
 
-Com o Docker instalado, abra um terminal, vá até a raiz do projeto e execute o comando abaixo para montar o container:
-```sh
-docker build -t redeems-challange:1.0 .
+Com base nas premissas:
+
+- [x] Estrutura de banco de dados adequada, com tabelas para páginas de resgates, resgates, opções de tamanho, perguntas e respostas.
+- [ ] Operações da API para criação e consulta de resgates.
+- [ ] Testes unitários e de integração para validar as funcionalidades.
+
+### Estrutura do Banco de Dados
+
+![image](https://github.com/user-attachments/assets/61d834b7-16e6-4cac-bc1b-0811d1ab5947)
+
+<div align="center">
+  :construction: Em desenvolvimento...
+</div>
+
+## Como rodar a aplicação
+
+No terminal, clone o projeto:
+
+```
+git clone git@github.com:thalis-freitas/redeems-challenge-ruby.git
 ```
 
-ou você pode usar também o docker-compose:
+Acesse a pasta do projeto:
 
-```sh
-docker-compose build
+```
+cd redeems-challenge-ruby
 ```
 
-Após a construção do container, execute o comando abaixo para que executar o servidor localmente:
+Certifique-se de que o Docker esteja em execução em sua máquina e construa as imagens:
 
-```sh
-docker-compose up app
+```
+docker compose build
 ```
 
-Caso queeria visualizar o resultado dos testes, você pode executar o seguinte comando abaixo:
+Suba o servidor:
 
-```sh
-docker-compose up test
+```
+docker compose up app
 ```
 
-### Sem utilização do Docker
-Com Ruby instalado em sua máquina, siga os seguintes passos:
+## Como rodar os testes
 
-- Instalando o bundler:
-```sh
-gem install bundler
 ```
-
-- Instalar as gems necessárias no Gemfile:
-```sh
-bundle install
+docker compose up test
 ```
-
-- Realizar a pré-configuração do banco de dados:
-```sh
-bundle exec rails db:setup
-```
-
-- Para executar o servidor localmente:
-```sh
-bundle exec rails server
-```
-
-- Para executar toda a suíte de testes:
-```sh
-bundle exec rails test
-```
-
-## Exemplo prático
-Disponbilizamos uma aplicação web que mostra de forma visual como será a interface front-end.
-
-https://lobby-redeems-challenge.netlify.app
