@@ -65,5 +65,48 @@ class AddressTest < ActiveSupport::TestCase
       assert_includes address.errors.details[:country], { error: :blank }
       assert_includes address.errors[:country], I18n.t('errors.messages.blank')
     end
+
+    test 'zip_code must match city and state' do
+      address = Address.new(city: 'Londrina', state: 'PR',
+                            zip_code: '86035-560', country: 'Brazil')
+
+      address.valid?
+
+      assert_not_includes address.errors[:zip_code],
+                          I18n.t('errors.messages.zip_code_mismatch')
+    end
+
+    test 'invalid zip_code does not match city/state' do
+      address = Address.new(city: 'São Paulo', state: 'RJ',
+                            zip_code: '60321070', country: 'Brazil')
+
+      address.valid?
+
+      assert_includes address.errors[:zip_code],
+                      I18n.t('errors.messages.zip_code_mismatch')
+    end
+
+    test 'zip_code validation fails if API is unreachable' do
+      address = Address.new(city: 'Santo André', state: 'SP',
+                            zip_code: '09061-265', country: 'Brazil')
+
+      Address.class_eval do
+        alias_method :original_validate_zip_code_with_api,
+                     :validate_zip_code_with_api
+
+        define_method(:validate_zip_code_with_api) do
+          errors.add(:zip_code, I18n.t('errors.messages.zip_code_unreachable'))
+        end
+      end
+
+      address.valid?
+
+      assert_includes address.errors[:zip_code],
+                      I18n.t('errors.messages.zip_code_unreachable')
+
+      Address.class_eval do
+        alias_method :validate_zip_code_with_api,:original_validate_zip_code_with_api
+      end
+    end
   end
 end

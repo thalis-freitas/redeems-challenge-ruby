@@ -3,3 +3,5 @@ pt-BR:
     messages:
       invalid_cpf: 'invalid CPF'
       invalid_email: 'invalid email'
+      zip_code_mismatch: 'Zip code does not match the provided city and/or state'
+      zip_code_unreachable: 'Could not validate the zip code, please wait a moment and try again'

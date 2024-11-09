@@ -3,3 +3,5 @@ pt-BR:
     messages:
       invalid_cpf: 'CPF inválido'
       invalid_email: 'email inválido'
+      zip_code_mismatch: 'CEP não corresponde à cidade e/ou estado informados'
+      zip_code_unreachable: 'não foi possível validar o CEP, aguarde um momento e tente novamente'
