@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    attributes:
+      size_option:
+        size:
+          S: 'P'
+          M: 'M'
+          L: 'G'
+          XL: 'GG'

@@ -1,0 +1,11 @@
+small:
+  size: S
+
+medium:
+  size: M
+
+large:
+  size: L
+
+extra_large:
+  size: XL
