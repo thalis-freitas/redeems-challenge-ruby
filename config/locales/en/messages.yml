@@ -1,0 +1,5 @@
+pt-BR:
+  errors:
+    messages:
+      invalid_cpf: 'invalid CPF'
+      invalid_email: 'invalid email'
