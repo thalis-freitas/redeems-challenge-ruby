@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    attributes:
+      redeem:
+        statuses:
+          pending: 'Pending'
+          approved: 'Approved'
+          rejected: 'Rejected'

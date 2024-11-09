@@ -1,0 +1,7 @@
+one:
+  content: 'What is your favorite color?'
+  redeem_page: one
+
+two:
+  content: 'How did you hear about us?'
+  redeem_page: one

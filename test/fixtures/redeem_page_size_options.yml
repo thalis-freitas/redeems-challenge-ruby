@@ -1,0 +1,11 @@
+one:
+  redeem_page: two
+  size_option: small
+
+two:
+  redeem_page: two
+  size_option: medium
+
+three:
+  redeem_page: two
+  size_option: large

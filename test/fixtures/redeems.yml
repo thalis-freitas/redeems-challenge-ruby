@@ -1,0 +1,17 @@
+pending_redeem:
+  user: one
+  redeem_page: one
+  address: one
+  status: pending
+
+approved_redeem:
+  user: two
+  redeem_page: two
+  address: two
+  status: approved
+
+rejected_redeem:
+  user: one
+  redeem_page: one
+  address: one
+  status: rejected

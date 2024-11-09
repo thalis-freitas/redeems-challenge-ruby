@@ -1,0 +1,9 @@
+one:
+  redeem: pending_redeem
+  question: one
+  content: 'Blue'
+
+two:
+  redeem: pending_redeem
+  question: two
+  content: 'Through a friend'
