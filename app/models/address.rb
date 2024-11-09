@@ -1,4 +1,6 @@
 class Address < ApplicationRecord
+  # has_many :redeems
+
   validates :street, :number, :neighborhood, :city, :state, :zip_code,
             :country, presence: true
 
@@ -32,6 +34,6 @@ class Address < ApplicationRecord
   def fetch_zip_code_data
     RestClient.get("https://brasilapi.com.br/api/cep/v1/#{zip_code}")
   rescue RestClient::ExceptionWithResponse
-    OpenStruct.new(code: 503)
+    Struct.new(code: 503)
   end
 end

@@ -105,7 +105,8 @@ class AddressTest < ActiveSupport::TestCase
                       I18n.t('errors.messages.zip_code_unreachable')
 
       Address.class_eval do
-        alias_method :validate_zip_code_with_api,:original_validate_zip_code_with_api
+        alias_method :validate_zip_code_with_api,
+                     :original_validate_zip_code_with_api
       end
     end
   end
