@@ -1,9 +1,9 @@
 one:
-  redeem_page: one
+  redeem_page: two
   size_option: small
 
 two:
-  redeem_page: one
+  redeem_page: two
   size_option: medium
 
 three:

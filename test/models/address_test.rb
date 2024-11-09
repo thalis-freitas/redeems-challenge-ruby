@@ -110,4 +110,15 @@ class AddressTest < ActiveSupport::TestCase
       end
     end
   end
+
+  describe 'associations' do
+    test 'has many redeems with dependent destroy' do
+      address = addresses(:one)
+      redeem = redeems(:pending_redeem)
+
+      address.destroy
+
+      assert_nil Redeem.find_by(id: redeem.id)
+    end
+  end
 end

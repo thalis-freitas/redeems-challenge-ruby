@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  # has_many :redeems
+  has_many :redeems, dependent: :destroy
 
   validates :street, :number, :neighborhood, :city, :state, :zip_code,
             :country, presence: true

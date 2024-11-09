@@ -37,16 +37,16 @@ class RedeemPageTest < ActiveSupport::TestCase
 
   describe 'associations' do
     test 'has many redeem_page_size_options' do
-      redeem_page = redeem_pages(:one)
+      redeem_page = redeem_pages(:two)
 
       assert_instance_of RedeemPageSizeOption,
                          redeem_page.redeem_page_size_options.first
 
-      assert_equal 2, redeem_page.redeem_page_size_options.count
+      assert_equal 3, redeem_page.redeem_page_size_options.count
     end
 
     test 'has many size_options through redeem_page_size_options' do
-      redeem_page = redeem_pages(:one)
+      redeem_page = redeem_pages(:two)
 
       assert_instance_of SizeOption, redeem_page.size_options.first
       assert redeem_page.size_options.exists?(size: 'S')
@@ -81,6 +81,16 @@ class RedeemPageTest < ActiveSupport::TestCase
 
       assert redeem_page.valid?
       assert_equal 0, redeem_page.questions.count
+    end
+
+    test 'has many redeems with dependent destroy' do
+      redeem_page = redeem_pages(:one)
+      redeem = Redeem.create!(status: 'pending', user: users(:one),
+                              redeem_page: redeem_page, address: addresses(:one))
+
+      redeem_page.destroy
+
+      assert_nil Redeem.find_by(id: redeem.id)
     end
   end
 end
