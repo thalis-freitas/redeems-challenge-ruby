@@ -28,6 +28,10 @@ Com base nas premissas:
 - [ ] Operações da API para criação e consulta de resgates.
 - [ ] Testes unitários e de integração para validar as funcionalidades.
 
+### Estrutura do Banco de Dados
+
+![image](https://github.com/user-attachments/assets/61d834b7-16e6-4cac-bc1b-0811d1ab5947)
+
 <div align="center">
   :construction: Em desenvolvimento...
 </div>
