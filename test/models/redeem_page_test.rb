@@ -37,7 +37,7 @@ class RedeemPageTest < ActiveSupport::TestCase
 
   describe 'associations' do
     test 'has many redeem_page_size_options' do
-      redeem_page = redeem_pages(:two)
+      redeem_page = redeem_pages(:inactive)
 
       assert_instance_of RedeemPageSizeOption,
                          redeem_page.redeem_page_size_options.first
@@ -46,7 +46,7 @@ class RedeemPageTest < ActiveSupport::TestCase
     end
 
     test 'has many size_options through redeem_page_size_options' do
-      redeem_page = redeem_pages(:two)
+      redeem_page = redeem_pages(:inactive)
 
       assert_instance_of SizeOption, redeem_page.size_options.first
       assert redeem_page.size_options.exists?(size: 'S')
@@ -54,7 +54,7 @@ class RedeemPageTest < ActiveSupport::TestCase
     end
 
     test 'should destroy associated redeem_page_size_options when redeem_page is destroyed' do
-      redeem_page = redeem_pages(:one)
+      redeem_page = redeem_pages(:active)
       size_option = size_options(:large)
 
       redeem_page_size_option = RedeemPageSizeOption.create!(
@@ -67,7 +67,7 @@ class RedeemPageTest < ActiveSupport::TestCase
     end
 
     test 'has many questions with dependent destroy' do
-      redeem_page = redeem_pages(:one)
+      redeem_page = redeem_pages(:active)
       question = Question.new(content: 'What is Lorem Ipsum?',
                               redeem_page: redeem_page)
 
@@ -77,14 +77,14 @@ class RedeemPageTest < ActiveSupport::TestCase
     end
 
     test 'redeem_page can exist without questions' do
-      redeem_page = redeem_pages(:two)
+      redeem_page = redeem_pages(:inactive)
 
       assert redeem_page.valid?
       assert_equal 0, redeem_page.questions.count
     end
 
     test 'has many redeems with dependent destroy' do
-      redeem_page = redeem_pages(:one)
+      redeem_page = redeem_pages(:active)
       redeem = Redeem.create!(status: 'pending', user: users(:one),
                               redeem_page: redeem_page, address: addresses(:one))
 
