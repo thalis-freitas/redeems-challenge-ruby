@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: Redeem Pages API
+  version: 'v1'
+
+  servers:
+  - url: http://localhost:3000
+    description: "Local development server"
+
+paths:
+  /api/v1/redeem_pages/{id}:
+    get:
+      summary: 'Get Redeem Page Data'
+      description: 'Returns data of a specific redeem page'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: 'The ID of the redeem page to retrieve'
+      responses:
+        '200':
+          description: 'Redeem page data'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: 'Unique identifier of the redeem page'
+                  name:
+                    type: string
+                    description: 'Name of the redeem page'
+                  active:
+                    type: boolean
+                    description: 'Indicates if the redeem page is active for new redeems'
+                  size_options:
+                    type: array
+                    description: 'List of available size options for this redeem page'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: 'Unique identifier of the size option'
+                        size:
+                          type: string
+                          description: 'Size option, e.g., "S", "M", "L"'
+                  questions:
+                    type: array
+                    description: 'List of additional questions for this redeem page'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: 'Unique identifier of the question'
+                        content:
+                          type: string
+                          description: 'Text of the question'
+        '403':
+          description: 'Forbidden - The redeem page is inactive and cannot be accessed for new redeems'
+        '404':
+          description: 'Redeem page not found - The specified redeem page ID does not exist'

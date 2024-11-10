@@ -5,6 +5,7 @@
   * [Desenvolvimento](#desenvolvimento)
   * [Como rodar a aplicação](#como-rodar-a-aplicação)
   * [Como rodar os testes](#como-rodar-os-testes)
+  * [Documentação da API](#documentação-da-api)
 
 ## Descrição do projeto
 
@@ -17,7 +18,7 @@
 - [x] O resgate obrigatoriamente deve estar associado a uma página de resgate.
 - [x] Páginas de resgate podem (ou não) ter variações de tamanhos.
 - [x] Páginas de resgate podem (ou não) ter perguntas extras.
-- [ ] Páginas de resgate podem ficar inacessíveis para novos resgates.
+- [x] Páginas de resgate podem ficar inacessíveis para novos resgates.
 - [ ] O mesmo usuário não pode realizar novos resgates antes que o resgate anterior seja aprovado ou reprovado.
 
 ### Solução
@@ -67,3 +68,13 @@ docker compose up app
 ```
 docker compose up test
 ```
+
+## Documentação da API
+
+Para acessar a documentação da API, abra seu navegador e vá para:
+
+```
+http://localhost:3000/api-docs
+```
+
+A documentação estará disponível no Swagger UI, onde você poderá explorar todos os endpoints da API, verificar as requisições, parâmetros e respostas esperadas.
