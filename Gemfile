@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.3'
 
+gem 'active_model_serializers'
 gem 'bootsnap', require: false
 gem 'pg', '~> 1.4'
 gem 'puma', '>= 5.0'
