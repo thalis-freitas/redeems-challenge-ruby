@@ -1,5 +1,9 @@
-active:
+active_without_questions:
   name: 'Lorem ipsum dolor sit amet'
+  active: true
+
+active:
+  name: 'Lorem ipsum vehicula a, vivamus'
   active: true
 
 inactive:

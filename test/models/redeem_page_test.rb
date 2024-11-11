@@ -84,8 +84,8 @@ class RedeemPageTest < ActiveSupport::TestCase
     end
 
     test 'has many redeems with dependent destroy' do
-      redeem_page = redeem_pages(:active)
-      redeem = Redeem.create!(status: 'pending', user: users(:one),
+      redeem_page = redeem_pages(:active_without_questions)
+      redeem = Redeem.create!(status: 'pending', user: users(:two),
                               redeem_page: redeem_page, address: addresses(:one))
 
       redeem_page.destroy

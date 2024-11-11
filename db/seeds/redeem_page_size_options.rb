@@ -1,4 +1,4 @@
-redeem_page = RedeemPage.find_by(name: 'Página de resgate 1')
+redeem_page = RedeemPage.find_by(name: 'Página de resgate 2')
 size_small = SizeOption.find_by(size: 'S')
 size_medium = SizeOption.find_by(size: 'M')
 size_large = SizeOption.find_by(size: 'L')
