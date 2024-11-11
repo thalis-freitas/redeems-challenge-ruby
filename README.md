@@ -59,6 +59,8 @@ Suba o servidor:
 docker compose up app
 ```
 
+As requisições da API estão disponíveis no repositório [Redeems API Requests](https://github.com/thalis-freitas/redeems-challenge-requests).
+
 ## Como rodar os testes
 
 ```
