@@ -12,7 +12,9 @@ class Api::V1::RedeemsController < ApiController
   private
 
   def redeem_params
-    params.require(:redeem).permit(:redeem_page_id)
+    params.require(:redeem)
+          .permit(:redeem_page_id, :size_option_id, answers: %i[content
+                                                                question_id])
   end
 
   def user_params

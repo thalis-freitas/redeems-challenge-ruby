@@ -19,23 +19,19 @@
 - [x] Páginas de resgate podem (ou não) ter variações de tamanhos.
 - [x] Páginas de resgate podem (ou não) ter perguntas extras.
 - [x] Páginas de resgate podem ficar inacessíveis para novos resgates.
-- [ ] O mesmo usuário não pode realizar novos resgates antes que o resgate anterior seja aprovado ou reprovado.
+- [x] O mesmo usuário não pode realizar novos resgates antes que o resgate anterior seja aprovado ou reprovado.
 
 ### Solução
 
 Com base nas premissas:
 
 - [x] Estrutura de banco de dados adequada, com tabelas para páginas de resgates, resgates, opções de tamanho, perguntas e respostas.
-- [ ] Operações da API para criação e consulta de resgates.
-- [ ] Testes unitários e de integração para validar as funcionalidades.
+- [x] Operações da API para criação e consulta de resgates.
+- [x] Testes unitários e de integração para validar as funcionalidades.
 
 ### Estrutura do Banco de Dados
 
 ![image](https://github.com/user-attachments/assets/61d834b7-16e6-4cac-bc1b-0811d1ab5947)
-
-<div align="center">
-  :construction: Em desenvolvimento...
-</div>
 
 ## Como rodar a aplicação
 

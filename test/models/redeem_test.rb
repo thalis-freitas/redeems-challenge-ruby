@@ -56,7 +56,8 @@ class RedeemTest < ActiveSupport::TestCase
       redeem = Redeem.new(redeem_page: redeem_pages(:active),
                           user: users(:two), address: addresses(:one))
 
-      assert_not redeem.valid?
+      redeem.save
+
       assert_includes redeem.errors[:answers],
                       I18n.t('errors.messages.missing_answers')
     end

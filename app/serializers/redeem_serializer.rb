@@ -3,4 +3,7 @@ class RedeemSerializer < ActiveModel::Serializer
 
   has_one :user, serializer: UserSerializer
   has_one :address, serializer: AddressSerializer
+  has_one :size_option, serializer: SizeOptionSerializer
+
+  has_many :answers, serializer: AnswerSerializer
 end

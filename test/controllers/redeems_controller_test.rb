@@ -4,6 +4,9 @@ class RedeemsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @redeem_page = redeem_pages(:active_without_questions)
 
+    @redeem_page_with_questions = redeem_pages(:active)
+    @redeem_page_with_questions.size_options << size_options(:small, :medium)
+
     @user_params = { name: 'Rebeca Rodrigues Sousa',
                      registration_number: '88463540015',
                      email: 'rebeca@email.com' }
@@ -15,6 +18,17 @@ class RedeemsControllerTest < ActionDispatch::IntegrationTest
 
     @redeem_params = { redeem_page_id: @redeem_page.id, user: @user_params,
                        address: @address_params }
+
+    @answers_params = [{ content: 'Blue',
+                         question_id: questions(:one).id },
+                       { content: 'Internet',
+                         question_id: questions(:two).id }]
+
+    @redeem_params_with_questions = { redeem_page_id: @redeem_page_with_questions.id,
+                                      user: @user_params,
+                                      address: @address_params,
+                                      size_option_id: size_options(:small).id,
+                                      answers: @answers_params }
   end
 
   describe 'POST /api/v1/redeems' do
@@ -51,6 +65,37 @@ class RedeemsControllerTest < ActionDispatch::IntegrationTest
         assert_includes response_data['errors'],
                         I18n.t('errors.messages.consecutive_redeems_not_allowed')
       end
+    end
+
+    describe 'with questions and size options' do
+      test 'should create redeem with size option and answers for questions' do
+        post api_v1_redeems_url,
+             params: { redeem: @redeem_params_with_questions }
+
+        response_data = response.parsed_body
+
+        assert_response :created
+
+        assert_equal @redeem_page_with_questions.id,
+                     response_data['redeem_page_id']
+
+        assert_equal size_options(:small).id, response_data['size_option']['id']
+
+        @answers_params.each_with_index do |answer, index|
+          assert_equal answer[:content],
+                       response_data['answers'][index]['content']
+
+          assert_equal answer[:question_id],
+                       response_data['answers'][index]['question_id']
+        end
+      end
+    end
+
+    test 'should ignore size option if redeem page has no size options' do
+      post api_v1_redeems_url, params: { redeem: @redeem_params }
+
+      assert_response :created
+      assert_nil Redeem.last.size_option_id
     end
   end
 end

@@ -98,4 +98,13 @@ class UserTest < ActiveSupport::TestCase
                       I18n.t('errors.messages.invalid_email')
     end
   end
+
+  describe 'associations' do
+    test 'has many redeems' do
+      user = users(:one)
+
+      assert_equal 2, user.redeems.count
+      assert_instance_of Redeem, user.redeems.first
+    end
+  end
 end
