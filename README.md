@@ -5,6 +5,7 @@
   * [Desenvolvimento](#desenvolvimento)
   * [Como rodar a aplicação](#como-rodar-a-aplicação)
   * [Como rodar os testes](#como-rodar-os-testes)
+  * [Documentação da API](#documentação-da-api)
 
 ## Descrição do projeto
 
@@ -17,24 +18,20 @@
 - [x] O resgate obrigatoriamente deve estar associado a uma página de resgate.
 - [x] Páginas de resgate podem (ou não) ter variações de tamanhos.
 - [x] Páginas de resgate podem (ou não) ter perguntas extras.
-- [ ] Páginas de resgate podem ficar inacessíveis para novos resgates.
-- [ ] O mesmo usuário não pode realizar novos resgates antes que o resgate anterior seja aprovado ou reprovado.
+- [x] Páginas de resgate podem ficar inacessíveis para novos resgates.
+- [x] O mesmo usuário não pode realizar novos resgates antes que o resgate anterior seja aprovado ou reprovado.
 
 ### Solução
 
 Com base nas premissas:
 
 - [x] Estrutura de banco de dados adequada, com tabelas para páginas de resgates, resgates, opções de tamanho, perguntas e respostas.
-- [ ] Operações da API para criação e consulta de resgates.
-- [ ] Testes unitários e de integração para validar as funcionalidades.
+- [x] Operações da API para criação e consulta de resgates.
+- [x] Testes unitários e de integração para validar as funcionalidades.
 
 ### Estrutura do Banco de Dados
 
 ![image](https://github.com/user-attachments/assets/61d834b7-16e6-4cac-bc1b-0811d1ab5947)
-
-<div align="center">
-  :construction: Em desenvolvimento...
-</div>
 
 ## Como rodar a aplicação
 
@@ -62,8 +59,20 @@ Suba o servidor:
 docker compose up app
 ```
 
+As requisições da API estão disponíveis no repositório [Redeems API Requests](https://github.com/thalis-freitas/redeems-challenge-requests).
+
 ## Como rodar os testes
 
 ```
 docker compose up test
 ```
+
+## Documentação da API
+
+Para acessar a documentação da API, abra seu navegador e vá para:
+
+```
+http://localhost:3000/api-docs
+```
+
+A documentação estará disponível no Swagger UI, onde você poderá explorar todos os endpoints da API, verificar as requisições, parâmetros e respostas esperadas.

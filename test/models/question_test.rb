@@ -16,7 +16,7 @@ class QuestionTest < ActiveSupport::TestCase
     test 'belongs to redeem_page' do
       question = questions(:one)
 
-      assert_equal redeem_pages(:one), question.redeem_page
+      assert_equal redeem_pages(:active), question.redeem_page
     end
 
     test 'has many answers' do

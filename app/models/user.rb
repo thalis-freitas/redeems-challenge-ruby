@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # has_many :redeems
+  has_many :redeems, dependent: nil
 
   validates :name, presence: true
   validates :registration_number, presence: true, uniqueness: true

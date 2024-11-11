@@ -5,3 +5,5 @@ pt-BR:
       invalid_email: 'email inválido'
       zip_code_mismatch: 'CEP não corresponde à cidade e/ou estado informados'
       zip_code_unreachable: 'não foi possível validar o CEP, aguarde um momento e tente novamente'
+      missing_answers: 'É necessário fornecer uma resposta para cada pergunta na página de resgate'
+      consecutive_redeems_not_allowed: 'Não é permitido criar um novo resgate enquanto há um resgate pendente.'

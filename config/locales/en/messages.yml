@@ -5,3 +5,5 @@ pt-BR:
       invalid_email: 'invalid email'
       zip_code_mismatch: 'Zip code does not match the provided city and/or state'
       zip_code_unreachable: 'Could not validate the zip code, please wait a moment and try again'
+      missing_answers: 'Must provide an answer for each question in the redeem page'
+      consecutive_redeems_not_allowed: 'Cannot create a new redeem while there is a pending redeem.'

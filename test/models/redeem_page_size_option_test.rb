@@ -4,7 +4,7 @@ class RedeemPageSizeOptionTest < ActiveSupport::TestCase
   describe '#valid?' do
     test 'is valid with unique redeem_page_id and size_option_id combination' do
       redeem_page_size_option = RedeemPageSizeOption.new(
-        redeem_page: redeem_pages(:one), size_option: size_options(:extra_large)
+        redeem_page: redeem_pages(:active), size_option: size_options(:extra_large)
       )
 
       assert redeem_page_size_option.valid?
@@ -12,17 +12,17 @@ class RedeemPageSizeOptionTest < ActiveSupport::TestCase
 
     test 'is invalid with duplicate redeem_page_id and size_option_id combination' do
       RedeemPageSizeOption.create!(
-        redeem_page: redeem_pages(:one), size_option: size_options(:large)
+        redeem_page: redeem_pages(:active), size_option: size_options(:large)
       )
 
       duplicate_option = RedeemPageSizeOption.new(
-        redeem_page: redeem_pages(:one), size_option: size_options(:large)
+        redeem_page: redeem_pages(:active), size_option: size_options(:large)
       )
 
       duplicate_option.valid?
 
       assert_includes duplicate_option.errors.details[:redeem_page_id],
-                      { error: :taken, value: redeem_pages(:one).id }
+                      { error: :taken, value: redeem_pages(:active).id }
 
       assert_includes duplicate_option.errors[:redeem_page_id],
                       I18n.t('errors.messages.taken')
