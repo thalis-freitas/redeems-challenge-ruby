@@ -31,7 +31,7 @@ Com base nas premissas:
 
 ### Estrutura do Banco de Dados
 
-![image](https://github.com/user-attachments/assets/61d834b7-16e6-4cac-bc1b-0811d1ab5947)
+![Database Structure](./images/database_structure.png)
 
 ## Como rodar a aplicação
 
